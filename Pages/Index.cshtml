@@ -1,0 +1,66 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "CyberShield";
+}
+
+<div class="text-center mb-4">
+    <h1 class="display-5">🛡️ CyberShield</h1>
+    <p class="text-muted">Verify suspicious messages, links, and documents before you act.</p>
+</div>
+
+<ul class="nav nav-tabs" id="cyberShieldTabs" role="tablist">
+    <li class="nav-item" role="presentation">
+        <button class="nav-link active" id="message-tab" data-bs-toggle="tab" data-bs-target="#message-panel" type="button" role="tab">
+            Message Scanner
+        </button>
+    </li>
+    <li class="nav-item" role="presentation">
+        <button class="nav-link" id="link-tab" data-bs-toggle="tab" data-bs-target="#link-panel" type="button" role="tab">
+            Link &amp; Document Checker
+        </button>
+    </li>
+</ul>
+
+<div class="tab-content border border-top-0 p-4" id="cyberShieldTabContent">
+
+    <!-- MESSAGE SCANNER PANEL -->
+    <div class="tab-pane fade show active" id="message-panel" role="tabpanel">
+        <div class="mb-2">
+            <button class="btn btn-sm btn-outline-secondary" id="sampleScamBtn">Try a sample scam SMS</button>
+        </div>
+        <textarea id="messageInput" class="form-control mb-3" rows="6" placeholder="Paste the SMS, email, or job ad text here..."></textarea>
+        <button id="scanMessageBtn" class="btn btn-primary">Scan Message</button>
+        <div id="messageSpinner" class="spinner-border text-primary ms-2 d-none" role="status"></div>
+
+        <div id="messageResult" class="mt-4 d-none"></div>
+    </div>
+
+    <!-- LINK & DOCUMENT CHECKER PANEL -->
+    <div class="tab-pane fade" id="link-panel" role="tabpanel">
+        <h5>Check a URL</h5>
+        <div class="mb-2">
+            <button class="btn btn-sm btn-outline-secondary" id="sampleUrlBtn">Try a known-bad URL</button>
+        </div>
+        <div class="input-group mb-3">
+            <input type="text" id="urlInput" class="form-control" placeholder="https://example.com">
+            <button id="checkUrlBtn" class="btn btn-primary">Check URL</button>
+        </div>
+        <div id="urlSpinner" class="spinner-border text-primary d-none mb-3" role="status"></div>
+        <div id="urlResult" class="mb-4 d-none"></div>
+
+        <hr>
+
+        <h5>Check a Document / Image</h5>
+        <input type="file" id="imageInput" class="form-control mb-3" accept="image/*">
+        <button id="checkImageBtn" class="btn btn-primary">Check Image</button>
+        <div id="imageSpinner" class="spinner-border text-primary ms-2 d-none" role="status"></div>
+
+        <div id="imageResult" class="mt-4 d-none"></div>
+    </div>
+
+</div>
+
+@section Scripts {
+    <script src="~/js/cybershield.js"></script>
+}
