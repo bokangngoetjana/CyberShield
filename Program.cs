@@ -11,7 +11,7 @@ builder.Services.AddControllers()
     });
 builder.Services.AddHttpClient<IMessageScannerService, GeminiMessageScannerService>();
 builder.Services.AddHttpClient<ILinkCheckService, SafeBrowsingLinkCheckService>();
-builder.Services.AddScoped<IDocumentForensicsService, ImageForensicsService>();
+builder.Services.AddScoped<IDocumentForensicsService>();
 builder.Services.AddScoped<PdfForensicsService>();
 builder.Services.AddScoped<DocxForensicsService>();
 builder.Services.AddEndpointsApiExplorer();
