@@ -3,22 +3,26 @@ function renderResult(containerId, result) {
     const container = document.getElementById(containerId);
     container.classList.remove('d-none');
 
-    const colorMap = { Green: 'success', Orange: 'warning', Red: 'danger' };
-    const badgeColor = colorMap[result.riskLevel] || 'secondary';
+    const riskConfig = {
+        Green: { icon: '✓', rowClass: 'risk-green' },
+        Orange: { icon: '!', rowClass: 'risk-orange' },
+        Red: { icon: '×', rowClass: 'risk-red' }
+    };
+    const cfg = riskConfig[result.riskLevel] || { icon: 'i', rowClass: '' };
 
     const signalsHtml = result.signals && result.signals.length
-        ? result.signals.map(s => `<li>${escapeHtml(s)}</li>`).join('')
+        ? result.signals.map(s => `<li><span class="signal-dot" aria-hidden="true">•</span><span>${escapeHtml(s)}</span></li>`).join('')
         : '<li>No specific signals detected.</li>';
 
     container.innerHTML = `
-        <div class="card border-${badgeColor}">
-            <div class="card-body">
-                <div class="d-flex align-items-center mb-2">
-                    <span class="badge bg-${badgeColor} fs-6 me-2">${result.riskLevel}</span>
-                    <span class="fw-bold">Trust Score: ${result.trustScore}/100</span>
+        <div class="card result-card ${cfg.rowClass}">
+            <div class="card-body p-4">
+                <div class="d-flex align-items-center justify-content-between mb-3 flex-wrap gap-2">
+                    <span class="badge risk-badge"><span aria-hidden="true">${cfg.icon}</span> ${escapeHtml(result.riskLevel.toUpperCase())}</span>
+                    <span class="trust-score"><span class="trust-label">Trust score</span>${result.trustScore}<span class="text-muted fs-6">/100</span></span>
                 </div>
-                <p class="mb-2">${escapeHtml(result.summary)}</p>
-                <ul class="mb-0">${signalsHtml}</ul>
+                <p class="mb-3 fs-6">${escapeHtml(result.summary)}</p>
+                <ul class="list-unstyled signal-list mb-0">${signalsHtml}</ul>
             </div>
         </div>
     `;
