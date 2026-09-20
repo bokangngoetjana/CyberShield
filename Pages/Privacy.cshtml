@@ -3,6 +3,68 @@
 @{
     ViewData["Title"] = "Privacy Policy";
 }
-<h1>@ViewData["Title"]</h1>
 
-<p>Use this page to detail your site's privacy policy.</p>
+<div class="container py-4" style="max-width: 800px;">
+    <h1 class="mb-4">Privacy Policy</h1>
+    <p class="text-muted">Last updated: September 2026</p>
+
+    <p>
+        CyberShield is a scam-detection tool built as a personal/portfolio project.
+        This page explains, plainly, what happens to the content you submit when you use it.
+    </p>
+
+    <h2 class="h4 mt-4">No accounts, no persistent storage</h2>
+    <p>
+        CyberShield does not require sign-up or login. Messages, URLs, and files you submit
+        for scanning are processed for the purpose of generating a result and are not saved,
+        logged, or stored by this application afterward.
+    </p>
+
+    <h2 class="h4 mt-4">What happens to your data during a scan</h2>
+    <p>Depending on which scanner you use, your submitted content is sent to the following third-party services for analysis:</p>
+    <ul>
+        <li>
+            <strong>Message Scanner:</strong> the text you submit is sent to Google's Gemini API
+            for language analysis, and is subject to
+            <a href="https://ai.google.dev/gemini-api/terms" target="_blank" rel="noopener">Google's Gemini API terms</a>.
+        </li>
+        <li>
+            <strong>Link Checker:</strong> the URL you submit is sent to Google's Safe Browsing API
+            to check it against known threat databases, subject to
+            <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google's Privacy Policy</a>.
+        </li>
+        <li>
+            <strong>Document &amp; Image Checker:</strong> uploaded files are analyzed
+            <strong>locally on this application's server</strong> (metadata inspection and
+            compression analysis). They are not sent to any external AI service or third party.
+        </li>
+    </ul>
+
+    <h2 class="h4 mt-4">Do not submit sensitive personal documents</h2>
+    <p>
+        While files are processed locally for the Document Checker and not retained afterward,
+        this is a portfolio project, not a production security product with formal audits,
+        encryption-at-rest guarantees, or compliance certifications. Please avoid uploading
+        real government IDs, financial documents, or other highly sensitive personal information.
+        Test files or redacted examples are recommended.
+    </p>
+
+    <h2 class="h4 mt-4">No tracking or analytics</h2>
+    <p>
+        This site does not use cookies, analytics scripts, or advertising trackers.
+    </p>
+
+    <h2 class="h4 mt-4">Limitations</h2>
+    <p>
+        CyberShield's results are heuristic and AI-assisted assessments, not guarantees.
+        A "Green" result does not certify something is safe, and a "Red" result does not
+        constitute legal or professional confirmation of fraud. Always use independent
+        judgment, especially for high-stakes decisions.
+    </p>
+
+    <h2 class="h4 mt-4">Contact</h2>
+    <p>
+        This is an independent project. For questions, see the project's
+        <a href="https://github.com/bokangngoetjana/CyberShield" target="_blank" rel="noopener">GitHub repository</a>.
+    </p>
+</div>
